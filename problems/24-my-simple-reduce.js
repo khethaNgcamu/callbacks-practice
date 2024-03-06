@@ -34,8 +34,20 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
   optional initial accumulator
 *******************************************************************************/
 
-let mySimpleReduce = function() {
+let mySimpleReduce = function(array, callback) {
 
+        if (array.length === 0) {
+            throw new Error("Array must not be empty");
+        }
+    
+        let accumulator = array[0];
+    
+        for (let i = 1; i < array.length; i++) {
+            let el = array[i];
+            accumulator = callback(accumulator, el);
+        }
+    
+        return accumulator;
 };
 
 
